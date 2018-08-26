@@ -1,0 +1,53 @@
+{
+  "name": "YouTube",
+  "version": "1.0.0",
+  "description": "A YouTube wrapper with Discord Rich Presence",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "build",
+    "postinstall": "npmpd --no-save"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:BrianPetkovsek/discord-youtube.git"
+  },
+  "keywords": [
+    "discord",
+    "rich",
+    "presence",
+    "youtube"
+  ],
+  "author": "BrianPetkovsek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BrianPetkovsek/discord-youtube/issues"
+  },
+  "build": {
+    "appId": "com.youtube.magic",
+    "win": {
+      "target": "nsis",
+      "icon": "./icon.ico"
+    }
+  },
+  "homepage": "https://github.com/BrianPetkovsek/discord-youtube#readme",
+  "dependencies": {
+    "discord-rpc": "^3.0.0-beta.8",
+	"electron-widevinecdm": "^5.0.2",
+    "moment": "^2.22.1"
+  },
+  "devDependencies": {
+    "electron": "^1.8.2-beta.5",
+    "electron-builder": "^19.55.3",
+    "npm-platform-dependencies": "^0.1.0"
+  },
+  "darwinDependencies": {
+    "electron-widevinecdm": "^7.0.0"
+  },
+  "linuxDependencies": {
+    "electron-widevinecdm": "^7.0.0"
+  },
+  "win32Dependencies": {
+    "electron-widevinecdm": "^5.0.2"
+  }
+}
