@@ -34,6 +34,9 @@ If Discord is not opened, or, for some reason, the RPC Client couldn't connect t
 Even if Discord is not opened, you can still use the app as a normal YouTube wrapper.
 
 # Previews
+
+Idle: <br>
 ![Browsing](https://i.imgur.com/bQoeoeb.png)
 
+Watching a video: <br> 
 ![Watching](https://i.imgur.com/tQvzLJs.png)
