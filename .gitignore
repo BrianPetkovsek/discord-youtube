@@ -62,3 +62,7 @@ typings/
 
 # next.js build output
 .next
+
+# ignore bat files in root
+!*.bat
+/*.bat

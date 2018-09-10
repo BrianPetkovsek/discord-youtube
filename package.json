@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "dist": "build",
-    "postinstall": "npmpd --no-save"
+    "postinstall": ""
   },
   "repository": {
     "type": "git",
@@ -28,16 +28,28 @@
     "win": {
       "target": "nsis",
       "icon": "./icon.ico"
-    }
+    },
+	"extraFiles": [
+      {
+        "from": "get-youtube.js",
+        "to": "get-youtube.js",
+        "filter": []
+      },
+      {
+        "from": "LICENSE",
+        "to": "LICENSE.discord-youtube.txt",
+        "filter": []
+      }
+    ]
   },
   "homepage": "https://github.com/BrianPetkovsek/discord-youtube#readme",
   "dependencies": {
-    "discord-rpc": "^3.0.0-beta.8",
-	"electron-widevinecdm": "^5.0.2",
+    "discord-rpc": "^3.0.0",
+    "electron-widevinecdm": "^5.0.2",
     "moment": "^2.22.1"
   },
   "devDependencies": {
-    "electron": "^1.8.2-beta.5",
+    "electron": "1.8.8",
     "electron-builder": "^19.55.3",
     "npm-platform-dependencies": "^0.1.0"
   },
