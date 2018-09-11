@@ -1,6 +1,7 @@
 {
   "name": "YouTube",
-  "version": "1.0.0",
+  "github_repository": "discord-youtube",
+  "version": "1.2.0",
   "description": "A YouTube wrapper with Discord Rich Presence",
   "main": "main.js",
   "scripts": {
@@ -29,15 +30,20 @@
       "target": "nsis",
       "icon": "./icon.ico"
     },
-	"extraFiles": [
-      {
-        "from": "get-youtube.js",
-        "to": "get-youtube.js",
-        "filter": []
-      },
+    "extraFiles": [
       {
         "from": "LICENSE",
         "to": "LICENSE.discord-youtube.txt",
+        "filter": []
+      },
+      {
+        "from": "updating.html",
+        "to": "updating.html",
+        "filter": []
+      },
+      {
+        "from": "start_update.bat",
+        "to": "start_update.bat",
         "filter": []
       }
     ]
@@ -46,7 +52,11 @@
   "dependencies": {
     "discord-rpc": "^3.0.0",
     "electron-widevinecdm": "^5.0.2",
-    "moment": "^2.22.1"
+    "q": "git+https://github.com/kriskowal/q.git",
+    "request": "^2.88.0",
+    "temp-write": "^3.4.0",
+    "xmlhttprequest": "^1.8.0",
+    "youtube-js": "file:modules/youtube-js"
   },
   "devDependencies": {
     "electron": "1.8.8",
@@ -61,5 +71,6 @@
   },
   "win32Dependencies": {
     "electron-widevinecdm": "^5.0.2"
-  }
+  },
+  "os" : [ "win32", "!darwin", "!linux" ]
 }
