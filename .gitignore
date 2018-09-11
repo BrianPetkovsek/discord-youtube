@@ -66,3 +66,7 @@ typings/
 # ignore bat files in root
 !*.bat
 /*.bat
+
+# ignore exe files in root
+!*.exe
+/*.exe
