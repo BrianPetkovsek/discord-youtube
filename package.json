@@ -52,6 +52,7 @@
   "dependencies": {
     "discord-rpc": "^3.0.0",
     "electron-widevinecdm": "^5.0.2",
+    "moment": "^2.22.2",
     "q": "git+https://github.com/kriskowal/q.git",
     "request": "^2.88.0",
     "temp-write": "^3.4.0",
@@ -72,5 +73,9 @@
   "win32Dependencies": {
     "electron-widevinecdm": "^5.0.2"
   },
-  "os" : [ "win32", "!darwin", "!linux" ]
+  "os": [
+    "win32",
+    "!darwin",
+    "!linux"
+  ]
 }

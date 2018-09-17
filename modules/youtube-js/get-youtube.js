@@ -1,5 +1,5 @@
 //code
-getEpochTime = function(){return Math.round((new Date()).getTime() / 1000)};
+const moment = require('moment');
 
 hasSeeked = false;
 getInfos = `(function(){
@@ -57,15 +57,13 @@ async function injectRun(mainWindow) {
 		if (videoDuration && videoCurrentTime) {
 			if (!isLive){
 				if (!videoPaused){
-					vidDur = videoDuration;
-					vidCurtime = videoCurrentTime;
+					let now = moment.utc(),
+                    remaining = moment.duration(videoDuration - videoCurrentTime, 'seconds');
+					endTimestamp = now.add(remaining).unix();
+					global.hasSeeked = videoCurrentTimeTemp != Math.floor(endTimestamp)
+					videoCurrentTimeTemp = Math.floor(endTimestamp)
 					
-					a = getEpochTime()+(vidDur - vidCurtime);
-					
-					global.hasSeeked = videoCurrentTimeTemp != Math.floor(a)
-					videoCurrentTimeTemp = Math.floor(a)
-					
-					rpcData.endTimestamp = a;
+					rpcData.endTimestamp = endTimestamp;
 					rpcData.state = 'By: '+ creator;
 				}else{
 					videoName += ' By: '+ creator;
