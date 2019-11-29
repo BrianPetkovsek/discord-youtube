@@ -180,3 +180,29 @@ app.on('ready', () => {
 app.on('window-all-closed', () => {
     app.quit();
 });
+
+//stops extra app instances from opening
+var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
+	// Someone tried to run a second instance, we should focus our window.
+	if (mainWindow) {
+		if (mainWindow.isMinimized()) mainWindow.restore();
+		mainWindow.focus();
+	}
+});
+
+if (shouldQuit) {
+	app.quit();
+	return;
+}
+
+//only allows one electron window open
+var iSWindowOpen = false;
+app.on('browser-window-created', function(event, window) {
+	if (iSWindowOpen){
+		window.loadURL('javascript:window.close();');
+		console.log("Close new window");
+	}else{
+		iSWindowOpen = true;
+		console.log("Open one window");
+	}
+});

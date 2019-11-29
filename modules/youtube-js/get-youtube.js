@@ -60,8 +60,8 @@ async function injectRun(mainWindow) {
 					let now = moment.utc(),
                     remaining = moment.duration(videoDuration - videoCurrentTime, 'seconds');
 					endTimestamp = now.add(remaining).unix();
-					global.hasSeeked = videoCurrentTimeTemp != Math.floor(endTimestamp)
-					videoCurrentTimeTemp = Math.floor(endTimestamp)
+					global.hasSeeked = global.videoCurrentTimeTemp != Math.floor(endTimestamp)
+					global.videoCurrentTimeTemp = Math.floor(endTimestamp)
 					
 					rpcData.endTimestamp = endTimestamp;
 					rpcData.state = 'By: '+ creator;
@@ -88,6 +88,7 @@ async function injectRun(mainWindow) {
 		rpcData.details = 'browsing';
 		rpcData.state = 'idle';
 	}
+	
 	if (global.hasSeeked){
 		//update with endTimestamp has seeked
 		global.hasSeeked = false;

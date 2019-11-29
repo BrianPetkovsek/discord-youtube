@@ -1,7 +1,7 @@
 {
   "name": "YouTube",
   "github_repository": "discord-youtube",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A YouTube wrapper with Discord Rich Presence",
   "main": "main.js",
   "scripts": {
@@ -50,6 +50,7 @@
   },
   "homepage": "https://github.com/BrianPetkovsek/discord-youtube#readme",
   "dependencies": {
+    "bad-words": "^1.6.4",
     "discord-rpc": "^3.0.0",
     "electron-widevinecdm": "^5.0.2",
     "moment": "^2.22.2",
