@@ -59,6 +59,7 @@ function download(uri, filename) {
     return deferred.promise;
 };
 isUPDATE = false
+isUPDATEDONE = false
 function getUpdate(){
 	a = 'https://api.github.com/repos/{0}/{1}/releases/latest'.format(author,github_repository)
 	var client = new HttpClient();
@@ -77,12 +78,19 @@ function getUpdate(){
 			console.log(browser_download_url)
 			download(browser_download_url,path).then(ret => {
 				var exec = require('child_process').execFile;
-				exec('start_update.bat', [path],function(err, data) {  
+				exec('start_update.bat', [path],function(err, data) { 
 					console.log(err)
 					console.log(data.toString());                       
-				});  
-				console.log('update done')
-				app.quit()
+				});
+				isUPDATEDONE = true;
+				setInterval(() => {
+					if (isUPDATEDONE){
+						console.log('update done')
+						app.quit()
+					}
+				}, 0.5E3);
+				//console.log('update done')
+				//app.quit()
 				callback(ret);
 			});
 			console.log('updating')
