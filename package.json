@@ -1,7 +1,7 @@
 {
   "name": "YouTube",
   "github_repository": "discord-youtube",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "A YouTube wrapper with Discord Rich Presence",
   "main": "main.js",
   "scripts": {
