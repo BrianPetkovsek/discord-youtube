@@ -50,10 +50,12 @@
   },
   "homepage": "https://github.com/BrianPetkovsek/discord-youtube#readme",
   "dependencies": {
-    "bad-words": "^1.6.4",
-    "discord-rpc": "^3.0.0",
-    "electron-widevinecdm": "^5.0.2",
+    "discord-rpc": "^3.0.1",
+    "electron-discord-register": "^1.0.0",
+    "electron-widevinecdm": "file:modules/electron-widevinecdm",
+    "jquery": "^3.3.1",
     "moment": "^2.22.2",
+    "bad-words": "^1.6.4",
     "q": "git+https://github.com/kriskowal/q.git",
     "request": "^2.88.0",
     "temp-write": "^3.4.0",
@@ -61,18 +63,9 @@
     "youtube-js": "file:modules/youtube-js"
   },
   "devDependencies": {
-    "electron": "1.8.8",
-    "electron-builder": "^19.55.3",
-    "npm-platform-dependencies": "^0.1.0"
-  },
-  "darwinDependencies": {
-    "electron-widevinecdm": "^7.0.0"
-  },
-  "linuxDependencies": {
-    "electron-widevinecdm": "^7.0.0"
-  },
-  "win32Dependencies": {
-    "electron-widevinecdm": "^5.0.2"
+    "electron": "^4.1.4",
+    "electron-builder": "^20.43.0",
+    "register-scheme": "0.0.2"
   },
   "os": [
     "win32",

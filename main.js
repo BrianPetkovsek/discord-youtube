@@ -176,6 +176,38 @@ rpc.on('ready', () => {
 
 app.on('ready', () => {
     mainWindow = new BrowserWindow(WindowSettings);
+	tmpWind = new BrowserWindow(WindowSettings);
+	tmpWind.hide()
+	
+	mainWindow.on('closed', () => {
+		app.quit();
+	})
+	
+	tmpWind.on('closed', () => {
+		app.quit();
+	})
+	
+	tmpWind.webContents.on('did-navigate', (event, url) => {
+		urlHost = new URL(url).host
+		if('www.youtube.com' == urlHost){
+			mainWindow.webContents.reload()
+			tmpWind.loadURL(updateUHTM)
+			tmpWind.hide()
+			mainWindow.show()
+		}
+	})
+	
+	mainWindow.webContents.on('will-navigate', (event, url) => {
+		urlHost = new URL(url).host
+		if('accounts.google.com' == urlHost){
+			event.preventDefault()
+			mainWindow.hide()
+			tmpWind.show()
+			tmpWind.loadURL(url, {userAgent: 'Chrome'});
+			
+		}
+	})
+
     //mainWindow.maximize();
 	if (global.isUPDATE){
 		mainWindow.loadURL(updateUHTM);
@@ -185,20 +217,23 @@ app.on('ready', () => {
 	}
 });
 
+
 app.on('window-all-closed', () => {
     app.quit();
 });
 
+
 //stops extra app instances from opening
-var shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory) {
-	// Someone tried to run a second instance, we should focus our window.
+var shouldQuit = app.requestSingleInstanceLock()
+app.on('second-instance', (event, argv, cwd) => {
+  // Someone tried to run a second instance, we should focus our window.
 	if (mainWindow) {
 		if (mainWindow.isMinimized()) mainWindow.restore();
 		mainWindow.focus();
 	}
-});
+})
 
-if (shouldQuit) {
+if (!shouldQuit) {
 	app.quit();
 	return;
 }
@@ -206,11 +241,13 @@ if (shouldQuit) {
 //only allows one electron window open
 var iSWindowOpen = false;
 app.on('browser-window-created', function(event, window) {
-	if (iSWindowOpen){
-		window.loadURL('javascript:window.close();');
-		console.log("Close new window");
-	}else{
-		iSWindowOpen = true;
-		console.log("Open one window");
+	if (window == mainWindow){
+		if (iSWindowOpen){
+			window.loadURL('javascript:window.close();');
+			console.log("Close new window");
+		}else{
+			iSWindowOpen = true;
+			console.log("Open one window");
+		}
 	}
 });
