@@ -6,7 +6,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "build",
+    "pack": "electron-builder --dir",
+	"dist": "electron-builder",
     "postinstall": ""
   },
   "repository": {
@@ -50,22 +51,22 @@
   },
   "homepage": "https://github.com/BrianPetkovsek/discord-youtube#readme",
   "dependencies": {
+    "bad-words": "^1.6.4",
     "discord-rpc": "^3.0.1",
     "electron-discord-register": "^1.0.0",
     "electron-widevinecdm": "file:modules/electron-widevinecdm",
-    "jquery": "^3.3.1",
     "moment": "^2.22.2",
-    "bad-words": "^1.6.4",
-    "q": "git+https://github.com/kriskowal/q.git",
-    "request": "^2.88.0",
+    "q": "file:modules/q-master",
+    "request": "^2.88.2",
     "temp-write": "^3.4.0",
     "xmlhttprequest": "^1.8.0",
     "youtube-js": "file:modules/youtube-js"
   },
   "devDependencies": {
-    "electron": "^4.1.4",
-    "electron-builder": "^20.43.0",
-    "register-scheme": "0.0.2"
+    "electron": "^4.2.4",
+    "electron-builder": "^22.3.2",
+	"register-scheme": "0.0.2",
+    "node-fetch": "^2.6.0"
   },
   "os": [
     "win32",
