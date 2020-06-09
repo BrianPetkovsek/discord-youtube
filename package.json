@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
-	"dist": "electron-builder",
+    "dist": "electron-builder",
     "postinstall": ""
   },
   "repository": {
@@ -52,9 +52,11 @@
   "homepage": "https://github.com/BrianPetkovsek/discord-youtube#readme",
   "dependencies": {
     "bad-words": "^1.6.4",
+    "custom-electron-titlebar": "^3.2.2-hotfix62",
     "discord-rpc": "^3.0.1",
     "electron-discord-register": "^1.0.0",
     "electron-widevinecdm": "file:modules/electron-widevinecdm",
+    "h264ify-js": "file:modules/h264ify-js",
     "moment": "^2.22.2",
     "q": "file:modules/q-master",
     "request": "^2.88.2",
@@ -65,7 +67,7 @@
   "devDependencies": {
     "electron": "^4.2.4",
     "electron-builder": "^22.3.2",
-	"register-scheme": "0.0.2",
+    "register-scheme": "0.0.2",
     "node-fetch": "^2.6.0"
   },
   "os": [

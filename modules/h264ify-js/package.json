@@ -1,0 +1,11 @@
+{
+  "name": "h264ify-js",
+  "version": "1.0.0",
+  "description": "h264ify-js",
+  "main": "get-h264ify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

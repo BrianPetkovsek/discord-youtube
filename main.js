@@ -3,6 +3,8 @@ const {Client} 			   = require('discord-rpc');
 const widevine             = require('electron-widevinecdm');
 const rpc                  = new Client({transport: 'ipc'});
 
+const path 				   = require('path')
+const {forceh264}		   = require('h264ify-js');
 const {injectRun}		   = require('youtube-js')
 const pack 			   	   = require("./package.json");
 const version 			   = pack.version;
@@ -121,6 +123,7 @@ let clientId = '472976802206187520',
         webPreferences: {
             nodeIntegration: true,
             plugins: true,
+			//preload: path.join(__dirname, 'preload.js')
         },
     },
     login = (tries = 0) => {
@@ -146,6 +149,7 @@ pastData={}
 async function checkYoutube() {
     if (!rpc || !mainWindow) return;
     
+	await forceh264(mainWindow);
 	let data = await injectRun(mainWindow);
 	filter = data[1]
 	data = data[0]
@@ -177,6 +181,9 @@ rpc.on('ready', () => {
 app.on('ready', () => {
     mainWindow = new BrowserWindow(WindowSettings);
 	tmpWind = new BrowserWindow(WindowSettings);
+	
+	mainWindow.setMenu(null);
+	tmpWind.setMenu(null);
 	tmpWind.hide()
 	
 	mainWindow.on('closed', () => {
