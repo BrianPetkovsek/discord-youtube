@@ -65,7 +65,7 @@
     "youtube-js": "file:modules/youtube-js"
   },
   "devDependencies": {
-    "electron": "^4.2.4",
+    "electron": "^9.4.0",
     "electron-builder": "^22.3.2",
     "register-scheme": "0.0.2",
     "node-fetch": "^2.6.0"
